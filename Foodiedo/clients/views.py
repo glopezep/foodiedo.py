@@ -1,7 +1,18 @@
 from rest_framework import generics, permissions
-from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
-# from django.shortcuts import get_object_or_404
+
+from .models import (
+    Product,
+    Category,
+    Status,
+    Order,
+)
+
+from .serializers import (
+    ProductSerializer,
+    CategorySerializer,
+    StatusSerializer,
+    OrderSerializer,
+)
 
 
 class ProductList(generics.ListCreateAPIView):
@@ -25,4 +36,28 @@ class CategoryList(generics.ListCreateAPIView):
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class StatusList(generics.ListCreateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class StatusDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
