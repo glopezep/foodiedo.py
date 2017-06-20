@@ -28,7 +28,7 @@ export DB_HOST='127.0.0.1'
 ## Usage
 
 ``` py
-pytohn3 manage.py runserver
+python3 manage.py runserver
 
 ```
 
